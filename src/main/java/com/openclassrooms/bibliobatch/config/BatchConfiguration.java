@@ -4,7 +4,7 @@ import com.openclassrooms.biblioback.ws.test.Borrowing;
 import com.openclassrooms.biblioback.ws.test.BorrowingGetExpiredRequest;
 import com.openclassrooms.biblioback.ws.test.TestPort;
 import com.openclassrooms.biblioback.ws.test.TestPortService;
-import com.openclassrooms.bibliobatch.email.EmailSender;
+import org.apache.log4j.Logger;
 import org.springframework.batch.core.*;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.mail.SimpleMailMessage;
+import org.springframework.scheduling.annotation.Scheduled;
 
 import java.util.List;
 
@@ -24,6 +25,10 @@ import java.util.List;
 @Configuration
 @EnableBatchProcessing
 public class BatchConfiguration {
+
+    private static final Logger log = Logger.getLogger(BatchConfiguration.class);
+
+
 
     @Autowired
     JobBuilderFactory jobBuilderFactory;
@@ -39,6 +44,7 @@ public class BatchConfiguration {
     TestPort testPort = service.getTestPortSoap11();
 
     @Bean
+    @Scheduled(cron = "0 0 14 ? 1/1 1")
     public Job job(JobBuilderFactory jobBuilderFactory,
                    StepBuilderFactory stepBuilderFactory,
                    ItemReader<Borrowing> itemReader,
@@ -62,8 +68,10 @@ public class BatchConfiguration {
     @Bean
     public ListItemReader<Borrowing> itemReader() {
         List<Borrowing> borrowings = testPort.borrowingGetExpired(new BorrowingGetExpiredRequest()).getBorrowingGetExpired();
-        for(Borrowing borrowing : borrowings)
+        for(Borrowing borrowing : borrowings) {
             System.out.println(borrowing.getBook().getTitle());
+            log.info("titre du livre non rendu: " + borrowing.getBook().getTitle());
+        }
         ListItemReader<Borrowing> reader = new ListItemReader<Borrowing>(borrowings);
 
 
