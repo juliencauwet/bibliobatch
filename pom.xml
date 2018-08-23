@@ -98,7 +98,65 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>build-classpath</goal>
+						</goals>
+						<configuration>
+							<outputFile>target/unix_cp.properties</outputFile>
+							<fileSeparator>/</fileSeparator>
+							<pathSeparator>:</pathSeparator>
+							<outputFilterFile>true</outputFilterFile>
+							<prefix>lib</prefix>
+						</configuration>
+						<id>unix_classpath</id>
+						<phase>prepare-package</phase>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<!-- Creation of the bin file (bat and sh) -->
+				<!-- A filter property file must be created in src/build/filters and given for each execution -->
+				<executions>
+				<execution>
+					<!-- Create the bin for the XML Update Class -->
+					<id>createXmlUpdateBin</id>
+					<phase>compile</phase>
+					<goals>
+						<goal>copy-resources</goal>
+					</goals>
+					<configuration>
+						<outputDirectory>${project.build.directory}/bin</outputDirectory>
+						<overwrite>true</overwrite>
+						<fileNameFiltering>true</fileNameFiltering>
+						<useBuildFilters>false</useBuildFilters>
+						<filters>
+							<filter>${project.basedir}/src/main/resources/application.properties</filter>
+						</filters>
+						<resources>
+							<resource>
+								<filtering>true</filtering>
+								<directory>${project.basedir}/src/main/bin</directory>
+								<includes>
+									<include>*.*</include>
+								</includes>
+							</resource>
+						</resources>
+					</configuration>
+				</execution>
+				</executions>
+			</plugin>
 		</plugins>
+
+
 	</build>
 
 
