@@ -4,7 +4,8 @@ import com.openclassrooms.biblioback.ws.test.Borrowing;
 import com.openclassrooms.biblioback.ws.test.BorrowingGetExpiredRequest;
 import com.openclassrooms.biblioback.ws.test.TestPort;
 import com.openclassrooms.biblioback.ws.test.TestPortService;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.batch.core.*;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
@@ -26,7 +27,7 @@ import java.util.List;
 @EnableBatchProcessing
 public class BatchConfiguration {
 
-    private static final Logger log = Logger.getLogger(BatchConfiguration.class);
+    private static final Logger log = LoggerFactory.getLogger(BatchConfiguration.class);
 
 
 

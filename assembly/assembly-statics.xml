@@ -29,9 +29,6 @@
                     <exclude>application.properties</exclude>
                 </excludes>
             </unpackOptions>
-            <includes>
-                <include> libQueTuVeuxInclure </include>
-            </includes>
         </dependencySet>
     </dependencySets>
 </assembly>

@@ -1,7 +1,8 @@
 package com.openclassrooms.bibliobatch.batch;
 
 import com.openclassrooms.biblioback.ws.test.Borrowing;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Component;
@@ -9,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class Processor implements ItemProcessor<Borrowing,SimpleMailMessage>{
 
-    private static final Logger log = Logger.getLogger(Processor.class);
+    private static final Logger log = LoggerFactory.getLogger(Processor.class);
 
     @Override
     public SimpleMailMessage process(Borrowing borrowing) throws Exception {

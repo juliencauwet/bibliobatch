@@ -9,7 +9,7 @@
     <includeBaseDirectory>false</includeBaseDirectory>
     <fileSets>
         <fileSet>
-            <directory>target/batchs</directory>
+            <directory>target/</directory>
             <outputDirectory>/</outputDirectory>
             <filtered>true</filtered>
         </fileSet>
