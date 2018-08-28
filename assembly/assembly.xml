@@ -11,6 +11,7 @@
         <fileSet>
             <directory>target/batchs</directory>
             <outputDirectory>/</outputDirectory>
+            <filtered>true</filtered>
         </fileSet>
     </fileSets>
 </assembly>
