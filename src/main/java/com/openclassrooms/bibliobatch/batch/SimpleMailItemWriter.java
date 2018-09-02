@@ -14,7 +14,7 @@ import java.util.List;
 public class SimpleMailItemWriter implements ItemWriter<SimpleMailMessage> {
 
     private JavaMailSender javaMailSender;
-    private static  final Logger log = LoggerFactory.getLogger(SimpleMailItemWriter.class);
+    //private static  final Logger log = LoggerFactory.getLogger(SimpleMailItemWriter.class);
 
     @Autowired
     public void setJavaMailSender(JavaMailSender javaMailSender) {
@@ -28,9 +28,9 @@ public class SimpleMailItemWriter implements ItemWriter<SimpleMailMessage> {
              ) {
             if(javaMailSender!= null) {
                 javaMailSender.send(message);
-                log.info("Message envoyé grâce au Mailsender " + javaMailSender + "!");
+                //log.info("Message envoyé grâce au Mailsender " + javaMailSender + "!");
             }else {
-                log.info("MailSender non défini!");
+                //log.info("MailSender non défini!");
             }
         }
     }

@@ -27,7 +27,7 @@ import java.util.List;
 @EnableBatchProcessing
 public class BatchConfiguration {
 
-    private static final Logger log = LoggerFactory.getLogger(BatchConfiguration.class);
+    //private static final Logger log = LoggerFactory.getLogger(BatchConfiguration.class);
 
 
 
@@ -71,7 +71,7 @@ public class BatchConfiguration {
         List<Borrowing> borrowings = testPort.borrowingGetExpired(new BorrowingGetExpiredRequest()).getBorrowingGetExpired();
         for(Borrowing borrowing : borrowings) {
             System.out.println(borrowing.getBook().getTitle());
-            log.info("titre du livre non rendu: " + borrowing.getBook().getTitle());
+            //log.info("titre du livre non rendu: " + borrowing.getBook().getTitle());
         }
         ListItemReader<Borrowing> reader = new ListItemReader<Borrowing>(borrowings);
 

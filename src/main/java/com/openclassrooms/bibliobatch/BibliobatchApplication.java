@@ -9,10 +9,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class BibliobatchApplication {
 
-	private static final Logger log = LoggerFactory.getLogger(BibliobatchApplication.class);
+	//private static final Logger log = LoggerFactory.getLogger(BibliobatchApplication.class);
 
 	public static void main(String[] args) {
-		log.info("Entrée dans l'application");
+		//log.info("Entrée dans l'application");
 
 		SpringApplication.run(BibliobatchApplication.class, args);
 	}
