@@ -9,7 +9,7 @@ SCRIPT_PATH=$( cd $(dirname $0) ; pwd -P )
 #else
  # LIB_PATH="$SCRIPT_PATH/lib/*"
   LIB_PATH="/Users/julien/IdeaProjects/bibliobatch/target/bibliobatch-0.0.1-SNAPSHOT/lib/*"
-fi
+#fi
 echo "$SCRIPT_PATH"
 echo "$LIB_PATH"
 export CLASSPATH="/Users/julien/IdeaProjects/bibliobatch/target/bibliobatch-0.0.1-SNAPSHOT/lib/*"
@@ -17,4 +17,4 @@ echo $CLASSPATH
 # ${1+"$@"} is mandatory if we want to preserve the quotation of the arguments
 # otherwise every space will split an argument in two
 # See https://stackoverflow.com/questions/743454/space-in-java-command-line-arguments
-java -jar ../@jarFileName@ -cp "$CLASSPATH" "$@"
+java -jar lib/@jarFileName@ -cp "$CLASSPATH" "$@"

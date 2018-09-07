@@ -27,9 +27,7 @@ import java.util.List;
 @EnableBatchProcessing
 public class BatchConfiguration {
 
-    //private static final Logger log = LoggerFactory.getLogger(BatchConfiguration.class);
-
-
+    private static final Logger log = LoggerFactory.getLogger(BatchConfiguration.class);
 
     @Autowired
     JobBuilderFactory jobBuilderFactory;
@@ -45,7 +43,6 @@ public class BatchConfiguration {
     TestPort testPort = service.getTestPortSoap11();
 
     @Bean
-    @Scheduled(cron = "0 0 14 ? 1/1 1")
     public Job job(JobBuilderFactory jobBuilderFactory,
                    StepBuilderFactory stepBuilderFactory,
                    ItemReader<Borrowing> itemReader,
@@ -71,7 +68,6 @@ public class BatchConfiguration {
         List<Borrowing> borrowings = testPort.borrowingGetExpired(new BorrowingGetExpiredRequest()).getBorrowingGetExpired();
         for(Borrowing borrowing : borrowings) {
             System.out.println(borrowing.getBook().getTitle());
-            //log.info("titre du livre non rendu: " + borrowing.getBook().getTitle());
         }
         ListItemReader<Borrowing> reader = new ListItemReader<Borrowing>(borrowings);
 

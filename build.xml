@@ -11,17 +11,21 @@
 
     <target name="init" depends="clean">
         <mkdir dir="${dist}" />
+        <!--
         <mkdir dir="${dist}/lib" />
+        -->
         <mkdir dir="${dist}/logs" />
         <mkdir dir="${dist}/scripts" />
     </target>
 
     <target name="generate-package" depends="init">
+        <!--
         <copy todir="${dist}/lib">
             <fileset dir="target/lib">
                 <include name="*.jar" />
             </fileset>
         </copy>
+        -->
         <copy todir="${dist}/bin">
             <fileset dir="target/">
                 <include name="*.jar" />
