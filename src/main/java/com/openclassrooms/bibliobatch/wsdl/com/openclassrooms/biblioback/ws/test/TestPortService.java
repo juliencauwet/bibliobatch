@@ -17,7 +17,7 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.2
  * 
  */
-@WebServiceClient(name = "TestPortService", targetNamespace = "http://test.ws.biblioback.openclassrooms.com", wsdlLocation = "http://localhost:8080/ws/test.wsdl")
+@WebServiceClient(name = "TestPortService", targetNamespace = "http://test.ws.biblioback.openclassrooms.com", wsdlLocation = "http://localhost:21310/ws/test.wsdl")
 public class TestPortService
     extends Service
 {
@@ -30,7 +30,7 @@ public class TestPortService
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("http://localhost:8080/ws/test.wsdl");
+            url = new URL("http://localhost:21310/ws/test.wsdl");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

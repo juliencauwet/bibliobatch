@@ -97,6 +97,18 @@ public interface TestPort {
 
     /**
      * 
+     * @param borrowingGetAllRequest
+     * @return
+     *     returns com.openclassrooms.biblioback.ws.test.BorrowingGetAllResponse
+     */
+    @WebMethod
+    @WebResult(name = "borrowingGetAllResponse", targetNamespace = "http://test.ws.biblioback.openclassrooms.com", partName = "borrowingGetAllResponse")
+    public BorrowingGetAllResponse borrowingGetAll(
+        @WebParam(name = "borrowingGetAllRequest", targetNamespace = "http://test.ws.biblioback.openclassrooms.com", partName = "borrowingGetAllRequest")
+        BorrowingGetAllRequest borrowingGetAllRequest);
+
+    /**
+     * 
      * @param appUserValidityCheckRequest
      * @return
      *     returns com.openclassrooms.biblioback.ws.test.AppUserValidityCheckResponse

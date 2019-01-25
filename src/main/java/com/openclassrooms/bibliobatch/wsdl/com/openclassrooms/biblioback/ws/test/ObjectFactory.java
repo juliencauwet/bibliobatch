@@ -62,6 +62,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link BorrowingGetAllRequest }
+     * 
+     */
+    public BorrowingGetAllRequest createBorrowingGetAllRequest() {
+        return new BorrowingGetAllRequest();
+    }
+
+    /**
      * Create an instance of {@link BorrowingGetResponse }
      * 
      */
@@ -107,6 +115,14 @@ public class ObjectFactory {
      */
     public BorrowingAddResponse createBorrowingAddResponse() {
         return new BorrowingAddResponse();
+    }
+
+    /**
+     * Create an instance of {@link BorrowingGetAllResponse }
+     * 
+     */
+    public BorrowingGetAllResponse createBorrowingGetAllResponse() {
+        return new BorrowingGetAllResponse();
     }
 
     /**

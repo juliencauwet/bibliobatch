@@ -3,8 +3,11 @@ package com.openclassrooms.biblioback.ws.test;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
@@ -18,7 +21,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="borrowingId" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="extensionTime" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="newDueReturnDate" type="{http://www.w3.org/2001/XMLSchema}date"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -30,13 +33,15 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
     "borrowingId",
-    "extensionTime"
+    "newDueReturnDate"
 })
 @XmlRootElement(name = "borrowingExtendRequest")
 public class BorrowingExtendRequest {
 
     protected int borrowingId;
-    protected int extensionTime;
+    @XmlElement(required = true)
+    @XmlSchemaType(name = "date")
+    protected XMLGregorianCalendar newDueReturnDate;
 
     /**
      * Obtient la valeur de la propriété borrowingId.
@@ -55,19 +60,27 @@ public class BorrowingExtendRequest {
     }
 
     /**
-     * Obtient la valeur de la propriété extensionTime.
+     * Obtient la valeur de la propriété newDueReturnDate.
      * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
      */
-    public int getExtensionTime() {
-        return extensionTime;
+    public XMLGregorianCalendar getNewDueReturnDate() {
+        return newDueReturnDate;
     }
 
     /**
-     * Définit la valeur de la propriété extensionTime.
+     * Définit la valeur de la propriété newDueReturnDate.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
      */
-    public void setExtensionTime(int value) {
-        this.extensionTime = value;
+    public void setNewDueReturnDate(XMLGregorianCalendar value) {
+        this.newDueReturnDate = value;
     }
 
 }
